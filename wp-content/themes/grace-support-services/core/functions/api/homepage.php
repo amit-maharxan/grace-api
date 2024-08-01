@@ -40,11 +40,26 @@ function custom_page_endpoint_handler($data) {
     $address            = get_field('address', $page_id);
 
     $homepage_service_lists = array();
-    foreach($services_lists as $services_list){
-        $arrays = array();
-        $data   = get_the_title($services_list);
-        array_push($arrays, $data);
-        array_push($homepage_service_lists, $arrays);
+
+    foreach($services_lists as $services_list) {
+        // Create an associative array for each service
+        $content_post = get_post($services_list);
+        $content = $content_post->post_content;
+        $content = apply_filters('the_content', $content);
+        $content = str_replace(']]>', ']]&gt;', $content);
+        $content = strip_tags($content);
+        $content = str_replace(array("\n", "\r"), '', $content);
+
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $services_list ), 'full' );
+        $arrays = array(
+            "title" => get_the_title($services_list),
+            "slug"  =>  $content_post->post_name,
+            "description"   => $content,
+            "image" =>  $image[0]
+        );
+
+        // Add the associative array to the main array
+        $homepage_service_lists[] = $arrays;
     }
 
     $response = array(
