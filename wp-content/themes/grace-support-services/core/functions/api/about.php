@@ -1,34 +1,37 @@
 <?php
 
-function custom_page_endpoint_handler($data) {
-    // Example: Fetch a page by ID or slug
-    $page_id = get_page_by_path('homepage'); // Replace 'example-page' with your actual page slug
+function custom_page_endpoint_handler_about($data) {
+
+    $page_id = get_page_by_path('about');
 
     if (!$page_id) {
         return new WP_Error('no_page', 'Page not found', array('status' => 404));
     }
 
-    // Get page data
     $page = get_post($page_id);
 
     $banner_image       = get_field('banner_image', $page_id);
     $banner_title       = get_field('banner_title', $page_id);
     $banner_description = get_field('banner_description', $page_id);
-    $about_image        = get_field('about_image', $page_id);
-    $about_title        = get_field('about_title', $page_id);
-    $about_description  = get_field('about_description', $page_id);
+
+    $about_image        = get_field('about_image', 2);
+    $about_title        = get_field('about_title', 2);
+    $about_description  = get_field('about_description', 2);
+
     $services_title     = get_field('services_title', $page_id);
     $services_lists     = get_field('services_lists', $page_id);
-    $testimonial_title  = get_field('testimonial_title', $page_id);
-    $contact_title      = get_field('contact_title', $page_id);
-    $why_grace_image    = get_field('why_grace_image', $page_id);
-    $why_grace_title    = get_field('why_grace_title', $page_id);
-    $why_grace_desc     = get_field('why_grace_desc', $page_id);
-    $phone              = get_field('phone', $page_id);
-    $email              = get_field('email', $page_id);
-    $address            = get_field('address', $page_id);
 
-    $homepage_service_lists = array();
+    $testimonial_title  = get_field('testimonial_title', 2);
+    $contact_title      = get_field('contact_title', 2);
+    $why_grace_image    = get_field('why_grace_image', 2);
+    $why_grace_title    = get_field('why_grace_title', 2);
+    $why_grace_desc     = get_field('why_grace_desc', 2);
+
+    $phone              = get_field('phone', 2);
+    $email              = get_field('email', 2);
+    $address            = get_field('address', 2);
+
+    $service_lists = array();
 
     foreach($services_lists as $services_list) {
         // Create an associative array for each service
@@ -48,7 +51,7 @@ function custom_page_endpoint_handler($data) {
         );
 
         // Add the associative array to the main array
-        $homepage_service_lists[] = $arrays;
+        $service_lists[] = $arrays;
     }
 
     $response = array(
@@ -60,7 +63,7 @@ function custom_page_endpoint_handler($data) {
         'about_title'           => $about_title,
         'about_description'     => $about_description,
         'services_title'        => $services_title,
-        'services_lists'        => $homepage_service_lists,
+        'services_lists'        => $service_lists,
         'testimonial_title'     => $testimonial_title,
         'contact_title'         => $contact_title,
         'why_grace_image'       => $why_grace_image,

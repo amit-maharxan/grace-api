@@ -64,4 +64,9 @@ require_once ( DK_CORE.'/lib/customizer.php');
 /**
  * API functions
  */
+require_once ( DK_FUNCTION.'/api/main.php' );
 require_once ( DK_FUNCTION.'/api/homepage.php' );
+require_once ( DK_FUNCTION.'/api/services.php' );
+require_once ( DK_FUNCTION.'/api/about.php' );
+require_once ( DK_FUNCTION.'/api/contact.php' );
+require_once ( DK_FUNCTION.'/api/service-detail.php' );
