@@ -30,5 +30,12 @@ function register_custom_page_endpoint() {
         'callback'              => 'service_post_detail_handler',
         'permission_callback'   => '__return_true',
     ));
+
+    register_rest_route('my-api/v2', '/social_links', array(
+        'methods'               => 'GET',
+        'callback'              => 'social_links_endpoint_handler',
+        'permission_callback'   => '__return_true',
+    ));
+    
 }
 add_action('rest_api_init', 'register_custom_page_endpoint');
