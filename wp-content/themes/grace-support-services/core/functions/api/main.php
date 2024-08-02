@@ -7,7 +7,7 @@ function register_custom_page_endpoint() {
         'permission_callback'   => '__return_true',
     ));
 
-    register_rest_route('my-api/v2', '/gservices/', array(
+    register_rest_route('my-api/v2', '/services/', array(
         'methods'               => 'GET',
         'callback'              => 'custom_page_endpoint_handler_services',
         'permission_callback'   => '__return_true',
