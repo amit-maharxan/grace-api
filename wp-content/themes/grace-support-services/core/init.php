@@ -70,4 +70,7 @@ require_once ( DK_FUNCTION.'/api/homepage.php' );
 require_once ( DK_FUNCTION.'/api/services.php' );
 require_once ( DK_FUNCTION.'/api/about.php' );
 require_once ( DK_FUNCTION.'/api/contact.php' );
+require_once ( DK_FUNCTION.'/api/contact_form.php' );
 require_once ( DK_FUNCTION.'/api/service-detail.php' );
+require_once ( DK_FUNCTION.'/api/social_icons.php' );
+require_once ( DK_FUNCTION.'/api/service_enquiry.php' );

@@ -43,3 +43,33 @@ function my_login_logo_url_title() {
     return 'GRACE SUPPORT';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+if( function_exists('acf_add_options_page') ) {
+
+	acf_add_options_page( array(
+		'page_title' 	=> 'General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	) );
+
+	acf_add_options_sub_page( array(
+		'page_title' 	=> 'Header Settings',
+		'menu_title'	=> 'Header',
+		'parent_slug'	=> 'theme-general-settings',
+	) );
+
+	acf_add_options_sub_page( array(
+		'page_title' 	=> 'Footer Settings',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-general-settings',
+	) );
+
+	acf_add_options_sub_page( array(
+		'page_title' 	=> 'Social Settings',
+		'menu_title'	=> 'Social',
+		'parent_slug'	=> 'theme-general-settings',
+	) );
+
+}

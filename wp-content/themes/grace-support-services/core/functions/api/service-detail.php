@@ -11,7 +11,7 @@ function service_post_detail_handler($data) {
     }
 
     $post_id 			= $post->ID;
-	$image				= wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
+	$banner_image      	= wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
     $banner_title       = get_the_title($post_id);
 
     $description_title      =   get_field('ser_title', $post_id);
@@ -78,7 +78,7 @@ function service_post_detail_handler($data) {
     // Prepare the response
     $response = array(
         'ID'                    => $post_id,
-        'banner_image'          => $image[0],
+        'banner_image'          => $banner_image[0],
         'banner_title'          => $banner_title,
         'description_title'     => $description_title,
         'description_content'   => $description_content,

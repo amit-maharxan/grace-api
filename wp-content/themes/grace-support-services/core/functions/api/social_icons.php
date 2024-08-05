@@ -7,13 +7,15 @@ function social_links_endpoint_handler($data) {
     $tiktok     =   get_field('tiktok', 'option');
     $facebook   =   get_field('facebook', 'option');
     $threads    =   get_field('threads', 'option');
+    $whatsapp   =   get_field('whatsapp', 'option');
 
     $response = array(
         'x'         => $x,
         'instagram' => $instagram,
         'tiktok'    => $tiktok,
         'facebook'  => $facebook,
-        'threads'   => $threads
+        'threads'   => $threads,
+        'whatsapp'  => $whatsapp
     );
 
     return rest_ensure_response($response);
